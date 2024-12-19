@@ -6,11 +6,20 @@ Breaking it down, WAR:
     -holds the cards : array of cards #done
 - two players
     - hold cards -> array of cards #done
-    - take turn putting top card of deck in the middle to compare -> if statement
-    - if player 1 card is higher, player 1 wins and gets the card
-    -else if player 2 card is higher, player 2 wins and gets the card
-    - else, it's a tie and both players go to war
-    - logic for war ( each player puts 3 cards face down on the table, and then puts 1 card face up and compare the 4th cards with if statement)
-    - what happens with cards that are won? bottom of array (cards in hand)? or in another array, then when no more cards in hand, shuffle and add to hand?
 
--shuffle cards -> there's an array,so randomly sort it.
+    - take turn putting top card of deck in the middle to compare -> if statement
+
+    - if player 1 card is higher, player 1 wins and gets the card
+
+    -else if player 2 card is higher, player 2 wins and gets the card
+
+    - else, it's a tie and both players go to war
+    
+    - logic for war ( each player puts 3 cards face down on the table, and then puts 1 card face up and compare the 4th cards with if statement)
+    - what happens with cards that are won? bottom of array (cards in hand)? or in another array, then when no more cards in hand, shuffle and add to hand? #done
+
+-shuffle cards -> there's an array,so randomly sort it. #done
+
+project completed
+
+now working on the UI

@@ -1,14 +1,60 @@
-class Cards{
-    constructor(number,suit){
+// Add these methods to your Cards class
+class Cards {
+    constructor(number, suit) {
         this.number = number;
         this.suit = suit;
+        this.element = this.createCardElement();
+    }
+
+    getSuitSymbol() {
+        const symbols = {
+            'Hearts': '♥',
+            'Diamonds': '♦',
+            'Clubs': '♣',
+            'Spades': '♠'
+        };
+        return symbols[this.suit];
+    }
+
+    getDisplayNumber() {
+        const special = {
+            1: 'A',
+            11: 'J',
+            12: 'Q',
+            13: 'K'
+        };
+        return special[this.number] || this.number;
+    }
+
+    createCardElement() {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        const value = document.createElement('div');
+        value.className = 'card-value';
+        value.textContent = this.getDisplayNumber();
+        
+        const suit = document.createElement('div');
+        suit.className = 'card-suit';
+        suit.textContent = this.getSuitSymbol();
+        
+        if (this.suit === 'Hearts' || this.suit === 'Diamonds') {
+            value.style.color = 'red';
+            suit.style.color = 'red';
+        }
+        
+        card.appendChild(value);
+        card.appendChild(suit);
+        return card;
     }
 }
 
 
+
+
 //hold 52 cards
 class Deck{
-    constructor(cards){
+    constructor(){
         this.cards = [];
     }
 }
@@ -18,32 +64,13 @@ const deck = new Deck()
 
 //create 4 suits : 13 cards and push to deck
 //clubs
-let clubs = [];
-for (let i = 1; i <= 13; i++) {
-       clubs.push(new Cards(i, 'Clubs')); 
-    
-}
-//diamonds
-let diamonds = [];
-for (let i = 1; i <= 13; i++) {
-       diamonds.push(new Cards(i, 'Diamonds')); 
-    
-}
-//hearts
-let hearts = [];
-for (let i = 1; i <= 13; i++) {
-       hearts.push(new Cards(i, 'Hearts')); 
-    
-}
-//spades
-let spades = [];
-for (let i = 1; i <= 13; i++) {
-       spades.push(new Cards(i, 'Spades')); 
-    
-}
-// use ...spread operator to push to deck
+const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
+suits.forEach(suit => {
+    for (let i = 1; i <= 13; i++) {
+        deck.cards.push(new Cards(i, suit));
+    }
+});
 
-deck.cards = [...clubs,...diamonds,...hearts,...spades];
 
 // shuffle the cards and give both players 26 cards each : 52/2 = 26 , which are random all of them 26 cards.
 // how do i randomly sort an array

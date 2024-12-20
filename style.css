@@ -1,7 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
-    background:#C1BAA1;
+    background-image: url(assets/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #654520;
+    font-family: "Poppins", serif;
+    font-weight: 200;
+  font-style: normal;
 }
 
-.container{
+.main-game{
     color:#654520
 }
+
+.main-game nav {
+    display: flex;
+    /* gap: 10px; */
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    
+}
+
+.main-game ul{
+    list-style: none;
+    display: flex;
+    gap: 7px;
+    cursor: pointer;
+}
+
+.main-game ul li:hover {
+    text-decoration: underline 0.15em #654520;
+    transition: text-decoration-color 300ms;
+    text-underline-offset: 0.4em;
+}
+
+

@@ -7,10 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <p id="score">Score: 0</p>
-        <!-- <button onclick="newGame()">New Game</button> -->
+
+    <div class="war-display">
+
     </div>
+
+    <div class="main-game">
+        <nav>
+            <ul>
+                <li>New Game |</li>
+                <li>Rules |</li>
+                <li>Single Player |</li>
+                <li>Multiplayer</li>
+            </ul>
+            <div>
+                <p id="score">Your Score: 0</p>
+            </div>
+        </nav>
+
+        <div class="game-board">
+            <div class="deck-area">
+                <div class="deck"></div>
+                <button id="deal-btn">Deal Cards</button>
+            </div>
+            <div class="player-areas">
+                <div id="player1-area" class="player-area"></div>
+                <div id="player2-area" class="player-area"></div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="singleplayer" hidden>
+        <!-- this singleplayer unlocks on clicking the single player button  -->
+    <!-- player1 is you and player 2 is the computer , have to make computer moves -->
+    </div>
+
+    <div class="multiplayer" hidden>
+        <!-- this unlocks on clicking multiplayer btn -->
+        <div class="game-info">
+            <p id="player1-count">Player 1 Cards: 26</p>
+            <p id="player2-count">Player 2 Cards: 26</p>
+            <p id="status">Game Status: Ready</p>
+        </div>
+        
+        <div class="playing-area">
+            <div class="player1-area">
+                <div id="player1-card" class="card"></div>
+                <button id="player1-draw">Draw Card</button>
+            </div>
+            
+            <div class="player2-area">
+                <div id="player2-card" class="card"></div>
+                <button id="player2-draw">Draw Card</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
    <script src="script.js"></script> 
 </body>
 </html>

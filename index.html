@@ -8,64 +8,52 @@
 </head>
 <body>
 
-    <div class="war-display">
-
-    </div>
-
     <div class="main-game">
         <nav>
             <ul>
-                <li>New Game |</li>
-                <li>Rules |</li>
-                <li>Single Player |</li>
-                <li>Multiplayer</li>
+                <li id="new-game">New Game |</li>
+                <li id="rules">Rules |</li>
+                <li id="single-player">Single Player |</li>
+                <li id="multiplayer">Multiplayer</li>
             </ul>
-            <div>
-                <p id="score">Your Score: 0</p>
-            </div>
         </nav>
-
-        <div class="game-board">
-            <div class="deck-area">
-                <div class="deck"></div>
-                <button id="deal-btn">Deal Cards</button>
-            </div>
-            <div class="player-areas">
-                <div id="player1-area" class="player-area"></div>
-                <div id="player2-area" class="player-area"></div>
-            </div>
-        </div>
-
-    </div>
-    
-    <div class="singleplayer" hidden>
-        <!-- this singleplayer unlocks on clicking the single player button  -->
-    <!-- player1 is you and player 2 is the computer , have to make computer moves -->
-    </div>
-
-    <div class="multiplayer" hidden>
-        <!-- this unlocks on clicking multiplayer btn -->
-        <div class="game-info">
-            <p id="player1-count">Player 1 Cards: 26</p>
-            <p id="player2-count">Player 2 Cards: 26</p>
-            <p id="status">Game Status: Ready</p>
-        </div>
         
-        <div class="playing-area">
-            <div class="player1-area">
-                <div id="player1-card" class="card"></div>
-                <button id="player1-draw">Draw Card</button>
+        <div class="game-container">
+            <!-- Common Game Board -->
+            <div class="game-board">
+                <div class="game-status" id="game-status"></div>
+
+                <div class="playing-area">
+                    <!-- Player 1 Area -->
+                    <div class="player-section">
+                        <img src="assets/multiplayer_you.jpeg" alt="" width="170">
+                        <p id="player1-count" style="font-weight: 400;">Player 1 Cards: 26</p>
+                        <h3>Player 1</h3>
+                        <div id="player1-card" class="card" style="margin-top: 15px;"></div>
+                        <button id="player1-draw" class="draw-btn">Draw Card</button>
+                    </div>
+
+                    <div class="center-area">
+                        <div id="war-alert" style="display: none;" class="war-alert">WAR!</div>
+                    </div>
+                    
+                    <!-- Player 2/Computer Area -->
+                    <div class="player-section">
+                        <img src="assets/mutilplayer_opponent.jpeg" alt="" width="170">
+                        <p id="player2-count" style="font-weight: 400;">Player 2 Cards: 26</p>
+                        <h3 id="opponent-label">Player 2</h3>
+                        <div id="player2-card" class="card" style="margin-top: 15px;"></div>
+                        <button id="player2-draw" class="draw-btn">Draw Card</button>
+                       <!-- for single player remove this button -->
+                    </div>
+
+                </div>
+               
+
             </div>
-            
-            <div class="player2-area">
-                <div id="player2-card" class="card"></div>
-                <button id="player2-draw">Draw Card</button>
-            </div>
+    
         </div>
     </div>
-
-
-
 
    <script src="script.js"></script> 
 </body>

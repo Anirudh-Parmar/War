@@ -20,40 +20,7 @@ Breaking it down, WAR:
 
 -shuffle cards -> there's an array,so randomly sort it. #done
 
-now working on the UI:
 
-- display score 
-   - score of each player at the top which updates
-
-- Game modes
-    - multiplayer (which we have already built) (a div)
-    - single player (where the computer plays) (a div)
-    -whatever the user selects , it will show up the div related to the user choice
-
-
-- display players 
-    - for multiplayer, will use images to display the players
-    - for single player , different image
-    - arrange the positions of each player
-
-- display war 
-    - display a change in background change
-    - make a div that is the size of the screen and then bring that div to the top of the screen
-
-- Card Game:
-    - display deck in the middle of the canvas
-    - dealing cards animation
-    - create card rendering function which will make the cards look like real cards
-    - build deck management system
-    - implement dealing animation so that whenever cards are dealt it happens with animation
-    - add game logic integration 
-        -both players will have 26 cards and when playing the cards from each player will be put in the center of the screen and compared and animate the winner getting cards and getting added back to his new deck , each player having curring stack and to their left having their new deck which they won and also to play user has to click on the deck of cards their current deck and then it will be sent for comparison in the middle, animate flipping cards when clicked , while the game is being played
-    - add score management system (for multiplayer and single player to update the scores when playing )
-    -
-
-
--New Game means restart the game
-- make a restart button that will reset the game
 
 
 

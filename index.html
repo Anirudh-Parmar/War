@@ -8,17 +8,30 @@
 </head>
 <body>
 
+    <div class="wrapper">
+
     <div class="main-game">
         <nav>
             <ul>
                 <li id="new-game">New Game |</li>
                 <li id="rules">Rules |</li>
-                <li id="single-player">Single Player |</li>
-                <li id="multiplayer">Multiplayer</li>
+                <li id="singleplayer" "><a href="" style="text-decoration: none; color: #654520;">SinglePlayer</a> |</li>
+                <li id="multiplayer"><a href="" style="text-decoration: none; color: #654520;">Multiplayer</a></li>
+
             </ul>
         </nav>
+
+        <div class="firstVisual">
+           <div class="player-section" style="font-size: 20px; height: 600px;">
+            lets play a game of cards!
+            Please choose a game mode!
+            lets Begin!
+
+           </div>
+           
+        </div>
         
-        <div class="game-container">
+        <div class="game-container" id="multi-player" style="display: none;">
             <!-- Common Game Board -->
             <div class="game-board">
                 <div class="game-status" id="game-status"></div>
@@ -30,21 +43,54 @@
                         <p id="player1-count" style="font-weight: 400;">Player 1 Cards: 26</p>
                         <h3>Player 1</h3>
                         <div id="player1-card" class="card" style="margin-top: 15px;"></div>
-                        <button id="player1-draw" class="draw-btn">Draw Card</button>
+                        <button id="player1-draw" class="draw-btn" onclick="multiPlayerDraw()">Draw Card</button>
                     </div>
 
                     <div class="center-area">
                         <div id="war-alert" style="display: none;" class="war-alert">WAR!</div>
                     </div>
                     
-                    <!-- Player 2/Computer Area -->
+                    <!-- Player 2 -->
                     <div class="player-section">
                         <img src="assets/mutilplayer_opponent.jpeg" alt="" width="170">
                         <p id="player2-count" style="font-weight: 400;">Player 2 Cards: 26</p>
                         <h3 id="opponent-label">Player 2</h3>
                         <div id="player2-card" class="card" style="margin-top: 15px;"></div>
                         <button id="player2-draw" class="draw-btn">Draw Card</button>
-                       <!-- for single player remove this button -->
+                    </div>
+
+                </div>
+               
+
+            </div>
+    
+        </div>
+        <div class="game-container" id="single-player" style="display: none;">
+            <!-- Common Game Board -->
+            <div class="game-board">
+                <div class="game-status" id="game-status"></div>
+
+                <div class="playing-area">
+                    <!-- Player 1 Area -->
+                    <div class="player-section">
+                        <img src="assets/multiplayer_you.jpeg" alt="" width="170">
+                        <p id="player1-count" style="font-weight: 400;">Player 1 Cards: 26</p>
+                        <h3>Player 1</h3>
+                        <div id="player1-card" class="card" style="margin-top: 15px;"></div>
+                        <button id="player1-draw" class="draw-btn" onclick="singlePlayerDraw()">Draw Card</button>
+                    </div>
+
+                    <div class="center-area">
+                        <div id="war-alert" style="display: none;" class="war-alert">WAR!</div>
+                    </div>
+                    
+                    <!-- Computer Area -->
+                    <div class="player-section">
+                        <img src="assets/player_comp.jpeg" alt="" width="170">
+                        <p id="player2-count" style="font-weight: 400;">Computer Cards: 26</p>
+                        <h3 id="opponent-label">Computer</h3>
+                        <div id="player2-card" class="card" style="margin-top: 15px;"></div>
+                       
                     </div>
 
                 </div>
@@ -54,6 +100,23 @@
     
         </div>
     </div>
+
+    <div class="rules" style="text-align: center;">
+        <h2>WAR Rules</h2>
+        <p >
+            War is a very simple card game for two players. Much like real war it's incredibly long and pointless. It's mostly a kids game, since it relies exclusively on luck of the draw. Like most card games it has plenty of regional variations, but the rules used on this site are the standard rules from Wikipedia. The game is played as follows:</p>
+
+            <h3>How to Play</h3>
+           <p>Each player turns up a card at the same time and the player with the higher card takes both cards and puts them, face down, on the bottom of his stack.
+
+            If the cards are the same rank, it is War. Each player turns up one card face down and one card face up. The player with the higher cards takes both piles (six cards). If the turned-up cards are again the same rank, each player places another card face down and turns another card face up. The player with the higher card takes all 10 cards, and so on.</p>
+
+            <h3>How to Win</h3>
+            <p>The game ends when one player has won all the cards.</p>
+        <a href="" >Back to Game</a>
+    </div>
+
+</div>
 
    <script src="script.js"></script> 
 </body>

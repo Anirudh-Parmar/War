@@ -1,3 +1,89 @@
+// Add event listener for rules navigation
+document.getElementById('rules').addEventListener('click', (e) => {
+    e.preventDefault();
+    const rulesSection = document.querySelector('.rules');
+    rulesSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Back to game link functionality
+document.querySelector('.rules a').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Start single player game
+function startSinglePlayer(e) {
+    e.preventDefault(); // Prevent default link behavior
+    document.getElementById('single-player').style.display = 'block';
+    document.getElementById('multi-player').style.display = 'none';
+    currentGameMode = 'single';
+    document.querySelector('.firstVisual').style.display = 'none';
+    // initializeSinglePlayerGame();
+}
+
+// Start multiplayer game
+function startMultiPlayer(e) {
+    e.preventDefault(); // Prevent default link behavior
+    document.getElementById('multi-player').style.display = 'block';
+    document.getElementById('single-player').style.display = 'none';
+    currentGameMode = 'multi';
+    document.querySelector('.firstVisual').style.display = 'none';
+    // initializeMultiPlayerGame();
+}
+
+const singleplayerBtn = document.getElementById('singleplayer');
+const multiplayerBtn = document.getElementById('multiplayer');
+singleplayerBtn.addEventListener('click', startSinglePlayer);
+multiplayerBtn.addEventListener('click', startMultiPlayer);
+
+
+// // Single player game logic
+// function initializeSinglePlayerGame() {
+//     // Initialize your existing single player game logic here
+//     resetGameState('sp');
+// }
+
+// // Multiplayer game logic
+// function initializeMultiPlayerGame() {
+//     // Initialize multiplayer game logic here
+//     resetGameState('mp');
+// }
+
+        // Reset game state
+        // function resetGameState(prefix) {
+        //     // Reset card displays
+        //     document.getElementById(`${prefix}-player-card`).textContent = '';
+        //     if (prefix === 'sp') {
+        //         document.getElementById(`${prefix}-computer-card`).textContent = '';
+        //     } else {
+        //         document.getElementById(`${prefix}-player2-card`).textContent = '';
+        //     }
+            
+        //     // Reset counts
+        //     if (prefix === 'sp') {
+        //         document.getElementById(`${prefix}-player-count`).textContent = '26';
+        //         document.getElementById(`${prefix}-computer-count`).textContent = '26';
+        //     } else {
+        //         document.getElementById(`${prefix}-player1-count`).textContent = '26';
+        //         document.getElementById(`${prefix}-player2-count`).textContent = '26';
+        //     }
+            
+        //     // Reset game status
+        //     document.getElementById(`${prefix}-game-status`).textContent = '';
+        // }
+
+        // Draw card functions
+        // function singlePlayerDraw() {
+        //     // Your existing single player draw logic here
+        //     document.getElementById('sp-game-status').textContent = 'Card drawn!';
+        // }
+
+        // function multiPlayerDraw() {
+        //     // Your multiplayer draw logic here
+        //     document.getElementById('mp-game-status').textContent = 'Card drawn!';
+        // }
+
+
 // Add these methods to your Cards class
 class Cards {
     constructor(number, suit) {

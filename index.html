@@ -13,7 +13,6 @@
     <div class="main-game">
         <nav>
             <ul>
-                <li id="new-game">New Game |</li>
                 <li id="rules">Rules |</li>
                 <li id="singleplayer" "><a href="" style="text-decoration: none; color: #654520;">SinglePlayer</a> |</li>
                 <li id="multiplayer"><a href="" style="text-decoration: none; color: #654520;">Multiplayer</a></li>
@@ -34,16 +33,16 @@
         <div class="game-container" id="multi-player" style="display: none;">
             <!-- Common Game Board -->
             <div class="game-board">
-                <div class="game-status" id="game-status"></div>
+                <div class="game-status" id="mp-game-status"></div>
 
                 <div class="playing-area">
                     <!-- Player 1 Area -->
                     <div class="player-section">
                         <img src="assets/multiplayer_you.jpeg" alt="" width="170">
-                        <p id="player1-count" style="font-weight: 400;">Player 1 Cards: 26</p>
+                        <p id="player1-count" style="font-weight: 400;"></p>
                         <h3>Player 1</h3>
                         <div id="player1-card" class="card" style="margin-top: 15px;"></div>
-                        <button id="player1-draw" class="draw-btn" onclick="multiPlayerDraw()">Draw Card</button>
+                        <button id="player1-draw" class="draw-btn">Draw Card</button>
                     </div>
 
                     <div class="center-area">
@@ -53,7 +52,7 @@
                     <!-- Player 2 -->
                     <div class="player-section">
                         <img src="assets/mutilplayer_opponent.jpeg" alt="" width="170">
-                        <p id="player2-count" style="font-weight: 400;">Player 2 Cards: 26</p>
+                        <p id="player2-count" style="font-weight: 400;"></p>
                         <h3 id="opponent-label">Player 2</h3>
                         <div id="player2-card" class="card" style="margin-top: 15px;"></div>
                         <button id="player2-draw" class="draw-btn">Draw Card</button>
@@ -119,5 +118,7 @@
 </div>
 
    <script src="script.js"></script> 
+   <script src="singleplayer.js"></script>
+   <script src="multiplayer.js"></script>
 </body>
 </html>

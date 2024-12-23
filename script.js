@@ -11,6 +11,7 @@ document.querySelector('.rules a').addEventListener('click', (e) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
 // Start single player game
 function startSinglePlayer(e) {
     e.preventDefault(); // Prevent default link behavior
@@ -28,7 +29,7 @@ function startMultiPlayer(e) {
     document.getElementById('single-player').style.display = 'none';
     currentGameMode = 'multi';
     document.querySelector('.firstVisual').style.display = 'none';
-    // initializeMultiPlayerGame();
+    initializeMultiPlayerGame();
 }
 
 const singleplayerBtn = document.getElementById('singleplayer');
@@ -37,54 +38,9 @@ singleplayerBtn.addEventListener('click', startSinglePlayer);
 multiplayerBtn.addEventListener('click', startMultiPlayer);
 
 
-// // Single player game logic
-// function initializeSinglePlayerGame() {
-//     // Initialize your existing single player game logic here
-//     resetGameState('sp');
-// }
-
-// // Multiplayer game logic
-// function initializeMultiPlayerGame() {
-//     // Initialize multiplayer game logic here
-//     resetGameState('mp');
-// }
-
-        // Reset game state
-        // function resetGameState(prefix) {
-        //     // Reset card displays
-        //     document.getElementById(`${prefix}-player-card`).textContent = '';
-        //     if (prefix === 'sp') {
-        //         document.getElementById(`${prefix}-computer-card`).textContent = '';
-        //     } else {
-        //         document.getElementById(`${prefix}-player2-card`).textContent = '';
-        //     }
-            
-        //     // Reset counts
-        //     if (prefix === 'sp') {
-        //         document.getElementById(`${prefix}-player-count`).textContent = '26';
-        //         document.getElementById(`${prefix}-computer-count`).textContent = '26';
-        //     } else {
-        //         document.getElementById(`${prefix}-player1-count`).textContent = '26';
-        //         document.getElementById(`${prefix}-player2-count`).textContent = '26';
-        //     }
-            
-        //     // Reset game status
-        //     document.getElementById(`${prefix}-game-status`).textContent = '';
-        // }
-
-        // Draw card functions
-        // function singlePlayerDraw() {
-        //     // Your existing single player draw logic here
-        //     document.getElementById('sp-game-status').textContent = 'Card drawn!';
-        // }
-
-        // function multiPlayerDraw() {
-        //     // Your multiplayer draw logic here
-        //     document.getElementById('mp-game-status').textContent = 'Card drawn!';
-        // }
 
 
-// Add these methods to your Cards class
+       
 class Cards {
     constructor(number, suit) {
         this.number = number;
@@ -182,72 +138,74 @@ shuffle(deck.cards);
 //give both players 26 cards each : 52/2 = 26
 
 
+
 const player1Stack = deck.cards.slice(0, 26); //array of 26 cards each -> deck of 26 cards
 const player2Stack = deck.cards.slice(26,52); //array of 26 cards each -> deck of 26 cards
 
-const player1newStack = [] 
-const player2newStack = []
-
-//put top card of each player's stack and compare
-// console.log(player1Stack.shift());
 
 
-if (player1Stack.shift()['number'] > player2Stack.shift()['number']){
-    player1newStack.push(player1Stack.shift());
-    player1newStack.push(player2Stack.shift());
-    console.log('Player 1 wins');
-
-}else if (player1Stack.shift()['number'] < player2Stack.shift()['number']) {
-    player2newStack.push(player1Stack.shift());
-    player2newStack.push(player2Stack.shift()); 
-    console.log('Player 2 wins');
-
-}else{
-    console.log('It is a tie, time to go for War');
-    war()
-}
-
-function war(){
-    // 3 cards face down and 1 card face up and compare the 4th card
-
-    shuffle(player1Stack)
-    shuffle(player2Stack)
-
-    // using just 1 card and then who ever wins send the remaining cards
-
-//    refer this : player1Stack.slice(0,3) // 3 cards face down
-//    refer this : player2Stack.slice(0,3) // 3 cards face down
-
-    if(player1Stack.shift()['number'] > player2Stack.shift()['number']){
-        player1newStack.push(player2Stack.slice(0,3));
-        player1newStack.push(player1Stack.slice(0,3));
-        player1newStack.push(player2Stack.shift());
-        player1newStack.push(player1Stack.shift());
-        console.log('Player 1 wins the War');
-
-    }else if(player1Stack.shift()['number'] < player2Stack.shift()['number']){
-    player2newStack.push(player1Stack.slice(0,3));
-    player2newStack.push(player2Stack.slice(0,3));
-    player2newStack.push(player1Stack.shift());
-    player2newStack.push(player2Stack.shift());
-    console.log('Player 2 refer this :');
-
-    }else{
-    console.log('It is a tie, time to go for War');
-    war()
+function war() {
+    // Check if players have enough cards for war
+    if (player1Stack.length < 4 || player2Stack.length < 4) {
+        handleInsufficientCards();
+        return;
     }
+
+    // Draw face down cards (3 each)
+    const player1WarCards = player1Stack.splice(0, 3);
+    const player2WarCards = player2Stack.splice(0, 3);
+    
+    // Draw face up cards for war
+    const player1WarCard = player1Stack.shift();
+    const player2WarCard = player2Stack.shift();
+
+    if (!player1WarCard || !player2WarCard) {
+        handleInsufficientCards();
+        return;
+    }
+
+    // Compare war cards
+    if (player1WarCard.number > player2WarCard.number) {
+        // Player 1 wins war
+        player1newStack.push(...player1WarCards, ...player2WarCards);
+        player1newStack.push(player1WarCard, player2WarCard);
+        showGameStatus('Player 1 wins the War!');
+    } 
+    else if (player1WarCard.number < player2WarCard.number) {
+        // Player 2 wins war
+        player2newStack.push(...player1WarCards, ...player2WarCards);
+        player2newStack.push(player1WarCard, player2WarCard);
+        showGameStatus('Player 2 wins the War!');
+    } 
+    else {
+        // Another tie - recursive war
+        showGameStatus('Another War!');
+        // Return cards to stacks for next war
+        player1Stack.unshift(player1WarCard, ...player1WarCards);
+        player2Stack.unshift(player2WarCard, ...player2WarCards);
+        war();
+    }
+
+    updateCardCounts();
+}
+
+function handleInsufficientCards() {
+    if (player1Stack.length < 4) {
+        player2newStack.push(...player1Stack);
+        player1Stack = [];
+        showGameStatus('Player 1 doesn\'t have enough cards. Player 2 wins!');
+    } else {
+        player1newStack.push(...player2Stack);
+        player2Stack = [];
+        showGameStatus('Player 2 doesn\'t have enough cards. Player 1 wins!');
+    }
+    updateCardCounts();
 }
 
 
-if (player1Stack.length === 0 ) {
-    shuffle(player1newStack);
-    player1Stack = player1newStack;
-}
 
-if (player2Stack.length === 0 ) {
-    shuffle(player2newStack);
-    player2Stack = player2newStack;
-}
+
+       
 
 
 
